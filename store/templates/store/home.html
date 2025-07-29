@@ -1,0 +1,61 @@
+{% extends 'store/layouts/main.html' %}
+{% block content %}
+{% include 'store/inc/slider.html' %}
+
+<style>
+    .product-image-container {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .product-image-container img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-card a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .product-card h5 {
+        font-weight: 600;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">Trending Products</h3>
+            <hr>
+            <div class="row justify-content-center">
+                {% for item in trending_products %}
+                    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                        <div class="card product-card shadow-sm w-100 text-center">
+                            <a href="{% url 'productview' item.category.slug item.slug %}">
+                                <div class="card-body">
+                                    <div class="product-image-container mb-3">
+                                        <img src="{{ item.product_image.url }}" alt="Product Image">
+                                    </div>
+                                    <h5>{{ item.name }}</h5>
+                                    <p class="text-muted">₹ {{ item.selling_price }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

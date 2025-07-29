@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <!-- CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+{% include 'store/inc/navbar.html' %}
+{% block content %}
+{% endblock %}
+
+<!--<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>-->
+<!--<script src="{% static 'js/custom.js' %}"></script>-->
+ <!-- SWEETALERT CSS -->
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- SWEETALERT JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+
+{% comment %} Jquery {% endcomment %}
+<!--<script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>-->
+
+{% comment %} custom js {% endcomment %}
+<script src="{% static '/js/custom.js' %}"></script>
+
+{% comment %} checkout js {% endcomment %}
+<script src="{% static '/js/checkout.js' %}"></script>
+
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+{% endblock %}
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+<script>
+    alertify.set('notifier','position', 'top-right');
+    {% for msg in messages %}
+        alertify.success("{{msg}}");
+    {% endfor %}
+</script>
+
+</body>
+</html>
